@@ -17,19 +17,23 @@ public:
 
         // optimal code
 
-        int firstMin = INT_MAX, secondMin = INT_MAX;
+    //     int firstMin = INT_MAX, secondMin = INT_MAX;
 
-        for(int i=1;i<nums.size();i++){
-            if(nums[i]<firstMin){
-                secondMin = firstMin;
-                firstMin = nums[i];
-            }
+    //     for(int i=1;i<nums.size();i++){
+    //         if(nums[i]<firstMin){
+    //             secondMin = firstMin;
+    //             firstMin = nums[i];
+    //         }
 
-            else if(nums[i]<secondMin){
-                secondMin = nums[i];
-            }
-        }
+    //         else if(nums[i]<secondMin){
+    //             secondMin = nums[i];
+    //         }
+    //     }
 
-        return nums[0] + firstMin + secondMin;
+    //     return nums[0] + firstMin + secondMin;
+
+          sort(nums.begin()+1, nums.end());
+          return nums[0] + nums[1] + nums[2];
+
     }
 };
