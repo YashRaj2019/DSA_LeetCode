@@ -7,8 +7,8 @@ public:
 
         int arrSum = 0;
 
-        for(int i=0;i<n;i++){
-           arrSum += nums[i];
+        for(auto x:nums){
+           arrSum += x;
         }
 
         return sum-arrSum;
