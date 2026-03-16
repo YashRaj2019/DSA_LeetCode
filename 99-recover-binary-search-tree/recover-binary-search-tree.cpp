@@ -11,33 +11,52 @@
  */
 class Solution {
 public:
-
-    TreeNode *first = NULL;
-    TreeNode *second = NULL;
-    TreeNode *prev = NULL;
-
-    void inorder(TreeNode* root){
-
-        if(!root) return;
-
-        inorder(root->left);
-
-        if(prev && prev->val > root->val){
-
-            if(!first)
-                first = prev;
-
-            second = root;
-        }
-
-        prev = root;
-
-        inorder(root->right);
-    }
-
     void recoverTree(TreeNode* root) {
 
-        inorder(root);
+        TreeNode *first = NULL;
+        TreeNode *second = NULL;
+        TreeNode *prev = NULL;
+
+        TreeNode *curr = root;
+
+        while(curr){
+
+            if(curr->left == NULL){
+
+                if(prev && prev->val > curr->val){
+                    if(!first) first = prev;
+                    second = curr;
+                }
+
+                prev = curr;
+                curr = curr->right;
+            }
+            else{
+
+                TreeNode* pred = curr->left;
+
+                while(pred->right && pred->right != curr)
+                    pred = pred->right;
+
+                if(pred->right == NULL){
+
+                    pred->right = curr;
+                    curr = curr->left;
+                }
+                else{
+
+                    pred->right = NULL;
+
+                    if(prev && prev->val > curr->val){
+                        if(!first) first = prev;
+                        second = curr;
+                    }
+
+                    prev = curr;
+                    curr = curr->right;
+                }
+            }
+        }
 
         swap(first->val, second->val);
     }
