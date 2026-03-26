@@ -24,10 +24,22 @@ public:
         for(int i=0;i<nums.size();i++){
             sum += nums[i];
 
-            if(mp.find(sum - k) != mp.end()){
+            // method 1: 
+
+            // if(mp.find(sum - k) != mp.end()){
+            //     total += mp[sum - k];
+            // }
+            // mp[sum]++;
+
+            // mrthod 2: 
+
+            if(mp.count(sum - k)){
                 total += mp[sum - k];
+                mp[sum]++;
             }
-            mp[sum]++;
+            else{
+                mp[sum]++;
+            }
         }
 
         return total;
