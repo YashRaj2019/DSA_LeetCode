@@ -18,7 +18,8 @@ public:
 
         // return count;
 
-        unordered_map<int, int>mp;
+        // unordered_map<int, int>mp;
+        vector<int>mp(k, 0);
         mp[0] = 1;
 
         int sum = 0, count = 0;
@@ -42,7 +43,7 @@ public:
         //         mp[rem] = 1;
         //     }
 
-        
+
             //method 2
             int rem =((sum % k)  + k) % k; // handle negative
             count += mp[rem];
