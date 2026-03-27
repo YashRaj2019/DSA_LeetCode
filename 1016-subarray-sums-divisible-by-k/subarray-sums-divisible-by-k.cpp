@@ -18,8 +18,8 @@ public:
 
         // return count;
 
-        // unordered_map<int, int>mp;
-        vector<int>mp(k, 0);
+        unordered_map<int, int>mp;
+        // vector<int>mp(k, 0);
         mp[0] = 1;
 
         int sum = 0, count = 0;
