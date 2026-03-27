@@ -26,20 +26,30 @@ public:
         for( int i=0;i<nums.size();i++){
             sum += nums[i];
 
-            int rem = sum % k;
+        // method 1
 
-            if(rem < 0){
-                rem = rem + k;
-            }
+        //     int rem = sum % k;
 
-            if(mp.count(rem)){
-                count += mp[rem];
-                mp[rem]++;
-            }
-            else{
-                mp[rem] = 1;
-            }
+        //     if(rem < 0){
+        //         rem = rem + k;
+        //     }
+
+        //     if(mp.count(rem)){
+        //         count += mp[rem];
+        //         mp[rem]++;
+        //     }
+        //     else{
+        //         mp[rem] = 1;
+        //     }
+
+        
+            //method 2
+            int rem =((sum % k)  + k) % k; // handle negative
+            count += mp[rem];
+            mp[rem]++;
         }
+
         return count;
+        
     }
 };
