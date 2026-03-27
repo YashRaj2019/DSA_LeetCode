@@ -19,23 +19,47 @@ public:
         // }
         // return count;
 
+
+
         // method 2:
-        int product = 1, start = 0, end = 0, n = nums.size(), count = 0;
+        // int product = 1, start = 0, end = 0, n = nums.size(), count = 0;
 
-        while(end<n){
-            product *= nums[end];
+        // while(end<n){
+        //     product *= nums[end];
 
-            while(product >= k && start<= end){
-                product /= nums[start];
-                start++;
+        //     while(product >= k && start<= end){
+        //         product /= nums[start];
+        //         start++;
+        //     }
+
+        //     count += 1 + (end - start);
+        //     end++;
+        // }
+
+        // return count;
+
+
+        // method 3: 
+        if(k<=1){
+            return 0;
+        }
+
+        int left = 0;
+        long long product = 1;
+        int count = 0;
+
+        for(int right = 0; right < nums.size(); right++){
+            product *= nums[right];
+
+            while(product >= k){
+                product /= nums[left];
+                left++;
             }
 
-            count += 1 + (end - start);
-            end++;
+            count += (right - left + 1);
         }
 
         return count;
-
 
     }
 };
