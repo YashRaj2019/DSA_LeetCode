@@ -23,7 +23,7 @@ public:
 
         while(!q.empty()){
             int n = q.size();
-            double sum = 0;
+            long sum = 0;
 
             for(int i=0; i<n; i++){
                 TreeNode* node = q.front();
@@ -40,7 +40,7 @@ public:
                 }
             }
 
-            ans.push_back(sum / n);
+            ans.push_back((double)sum / n);
         }
         return ans;
     }
