@@ -12,7 +12,7 @@ public:
             return mid;
         }
 
-        else if(nums[mid] <= target){
+        else if(nums[mid] < target){
             return binSearch(nums, target, mid+1, end);
         }
 
