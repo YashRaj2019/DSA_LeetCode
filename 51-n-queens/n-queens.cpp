@@ -26,9 +26,7 @@ public:
                 return false;
             }
         }
-
-        return true;
-        
+        return true; 
     }
 
     void nQueens(vector<string> &board, int row, int n, vector<vector<string>> &ans){
@@ -55,3 +53,5 @@ public:
 
     }
 };
+
+
