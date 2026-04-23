@@ -1,7 +1,25 @@
 class Solution {
 public:
+
+    int fibon(int n, vector<int> &dp){
+
+    
+        // base case
+        if(n <= 1){
+            return n;
+        }
+            // need not to calculate already calculated result
+            if(dp[n] != -1){
+                return dp[n];
+            }
+            return dp[n] = fibon(n-1, dp) + fibon(n-2, dp);
+    }
+
     int fib(int n) {
-        // if(n<=1){
+
+        // method 1 : using loop
+
+        // if(n<=1){   // base case
         //     return n;
         // }
 
@@ -16,12 +34,18 @@ public:
 
         // return prev1;
 
-        if(n==0 || n==1){
-            return n;
-        }
+        // // method 2 : using recursion
+        // if(n==0 || n==1){  // base case
+        //     return n;
+        // }
 
-        return fib(n-1) + fib(n-2);
+        // return fib(n-1) + fib(n-2);
 
+
+        // method 3: optimised using dp
+
+        vector<int> dp(n+1, -1);
+        return fibon(n, dp);
         
     }
 };
