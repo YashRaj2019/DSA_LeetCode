@@ -42,30 +42,94 @@
 
 // method 2 using unordered map
 
+// class Solution {
+// public:
+//     bool checkInclusion(string s1, string s2) {
+//         int k = s1.size();
+//         if(k > s2.size()) return false;
+
+//         unordered_map<char, int> m1, m2;
+
+//         // frequency of s1
+//         for(char c : s1) m1[c]++;
+
+//         // first window
+//         for(int i = 0; i < k; i++) m2[s2[i]]++;
+
+//         if(m1 == m2) return true;
+
+//         // sliding window
+//         for(int i = k; i < s2.size(); i++){
+//             m2[s2[i]]++;              // add new char
+//             m2[s2[i-k]]--;            // remove old char
+
+//             if(m2[s2[i-k]] == 0) m2.erase(s2[i-k]);
+
+//             if(m1 == m2) return true;
+//         }
+
+//         return false;
+//     }
+// };
+
+// method 3 : using array
+
+// class Solution {
+// public:
+//     bool checkInclusion(string s1, string s2) {
+//         int k = s1.size();
+//         if(k > s2.size()) return false;
+
+//         vector<int> freq1(26, 0), freq2(26, 0);
+
+//         // build freq for s1 and first window
+//         for(int i = 0; i < k; i++){
+//             freq1[s1[i] - 'a']++;
+//             freq2[s2[i] - 'a']++;
+//         }
+
+//         if(freq1 == freq2) return true;
+
+//         // sliding window
+//         for(int i = k; i < s2.size(); i++){
+//             freq2[s2[i] - 'a']++;          // add new char
+//             freq2[s2[i-k] - 'a']--;        // remove old char
+
+//             if(freq1 == freq2) return true;
+//         }
+
+//         return false;
+//     }
+// };
+
+//  method 4: most optimised and efficient
+
 class Solution {
 public:
     bool checkInclusion(string s1, string s2) {
         int k = s1.size();
         if(k > s2.size()) return false;
 
-        unordered_map<char, int> m1, m2;
+        vector<int> freq(26, 0);
 
-        // frequency of s1
-        for(char c : s1) m1[c]++;
+        for(char c : s1) freq[c - 'a']++;
 
-        // first window
-        for(int i = 0; i < k; i++) m2[s2[i]]++;
+        int left = 0, right = 0, count = k;
 
-        if(m1 == m2) return true;
+        while(right < s2.size()){
+            if(freq[s2[right] - 'a']-- > 0){
+                count--;
+            }
+            right++;
 
-        // sliding window
-        for(int i = k; i < s2.size(); i++){
-            m2[s2[i]]++;              // add new char
-            m2[s2[i-k]]--;            // remove old char
+            if(count == 0) return true;
 
-            if(m2[s2[i-k]] == 0) m2.erase(s2[i-k]);
-
-            if(m1 == m2) return true;
+            if(right - left == k){
+                if(freq[s2[left] - 'a']++ >= 0){
+                    count++;
+                }
+                left++;
+            }
         }
 
         return false;
