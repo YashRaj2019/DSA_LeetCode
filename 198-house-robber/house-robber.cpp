@@ -71,7 +71,7 @@
 //     }
 // };
 
-// space optimisation
+// space optimisation , best approach
 class Solution {
 public:
     int rob(vector<int>& nums) {
