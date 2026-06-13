@@ -17,30 +17,50 @@ public:
 
         // method 2 : using two pointer approach
 
-        vector<pair<int, int>>ans;
+        // vector<pair<int, int>>ans;
 
-        for(int i=0; i<nums.size(); i++){
-            ans.push_back({nums[i], i});
+        // for(int i=0; i<nums.size(); i++){
+        //     ans.push_back({nums[i], i});
+        // }
+
+        // sort(ans.begin(), ans.end());
+
+        // int start = 0, end = ans.size()-1;
+
+        // while(start < end){
+        //     int sum = ans[start].first + ans[end].first;
+
+        //     if(sum == target){
+        //         return {ans[start].second, ans[end].second};
+        //     }
+        //     else if(sum < target){
+        //         start++;
+        //     }
+
+        //     else{
+        //         end--;
+        //     }
+        // }
+        // return {};
+
+        unordered_map<int, int> mp;
+        vector<int>ans;
+
+        for(int i =0; i<nums.size(); i++){
+
+            int first = nums[i];
+            int second = target - first;
+
+            if(mp.find(second) != mp.end()){
+                ans.push_back(i);
+                ans.push_back(mp[second]);
+                break;
+            }
+            
+            mp[first] = i;
+
         }
 
-        sort(ans.begin(), ans.end());
-
-        int start = 0, end = ans.size()-1;
-
-        while(start < end){
-            int sum = ans[start].first + ans[end].first;
-
-            if(sum == target){
-                return {ans[start].second, ans[end].second};
-            }
-            else if(sum < target){
-                start++;
-            }
-
-            else{
-                end--;
-            }
-        }
-        return {};
+        return ans;
     }
 };
