@@ -15,7 +15,7 @@ public:
         // }
         // return {};
 
-        // method 2 : using two pointer approach
+        // method 2 : using two pointer approach : O(n * log(n))
 
         // vector<pair<int, int>>ans;
 
@@ -43,24 +43,49 @@ public:
         // }
         // return {};
 
+
+
+//         method 3: optimal : using hasing : O(n)
+
+//         unordered_map<int, int> mp;
+//         vector<int>ans;
+
+//         for(int i =0; i<nums.size(); i++){
+
+//             int first = nums[i];
+//             int second = target - first;
+
+//             if(mp.find(second) != mp.end()){
+//                 ans.push_back(i);
+//                 ans.push_back(mp[second]);
+//                 break;
+//             }
+            
+//             mp[first] = i;
+
+//         }
+
+//         return ans;
+//     }
+// };
+
+
+        // method 3: optimal : using hasing : O(n)
+
         unordered_map<int, int> mp;
-        vector<int>ans;
 
         for(int i =0; i<nums.size(); i++){
 
-            int first = nums[i];
-            int second = target - first;
+            int second = target - nums[i];
 
             if(mp.find(second) != mp.end()){
-                ans.push_back(i);
-                ans.push_back(mp[second]);
-                break;
+                return {mp[second], i};
             }
             
-            mp[first] = i;
+            mp[nums[i]] = i;
 
         }
 
-        return ans;
+        return {};
     }
 };
