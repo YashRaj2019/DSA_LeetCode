@@ -26,7 +26,7 @@ public:
         do{
             // find intersection point
             slow = nums[slow]; // +1
-            fast = nums[nums[fast]];
+            fast = nums[nums[fast]]; // +2
         } while (slow != fast);
 
         // find cycle entrance
