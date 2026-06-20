@@ -3,9 +3,9 @@ public:
 
     stack<pair<int, int>>st;
 
-    // StockSpanner() {
+    StockSpanner() {
         
-    // }
+    }
     
     int next(int price) {
         int span = 1;
