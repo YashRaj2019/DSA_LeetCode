@@ -1,9 +1,9 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char>st;
+        stack<int> st;
 
-        for(int i=0;i<s.size();i++){
+        for(int i=0; i<s.size(); i++){
             char ch = s[i];
 
             if(ch == '(' || ch == '{' || ch == '['){
@@ -11,19 +11,26 @@ public:
             }
 
             else{
-                if(st.empty()){
+                if(st.size() == 0){
                     return false;
                 }
-
                 char top = st.top();
                 st.pop();
 
-                if((ch == ')' && top != '(') || (ch == '}' && top != '{') || (ch == ']' && top != '[' )){
+                if((ch == ')' && top != '(') || (ch == '}' && top != '{') || (ch == ']' && top != '['))
+                {
                     return false;
                 }
-            }
-        } 
 
-        return st.empty();   
+            }
+            
+            
+        }
+
+        return st.empty();
+
     }
 };
+
+
+
