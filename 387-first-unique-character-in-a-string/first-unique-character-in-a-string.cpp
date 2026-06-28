@@ -18,12 +18,29 @@ public:
 
         // return -1;
 
-        for(int i=0; i<s.size(); i++){  // O(n^2)
-            if(s.find(s[i]) == s.rfind(s[i])){
-                return i;
+        // for(int i=0; i<s.size(); i++){  // O(n^2)
+        //     if(s.find(s[i]) == s.rfind(s[i])){
+        //         return i;
+        //     }
+        // }
+
+        // return -1;
+
+        unordered_map<char, int>m;
+        queue<int>q;
+
+        for(int i=0; i<s.size(); i++){
+            if(m.find(s[i]) == m.end()){
+                q.push(i);
             }
+
+            m[s[i]]++;
+
+            while(q.size() > 0 && m[s[q.front()]] > 1){
+                q.pop();
+            } 
         }
 
-        return -1;
+        return q.empty() ? -1 : q.front();
     }
 };
