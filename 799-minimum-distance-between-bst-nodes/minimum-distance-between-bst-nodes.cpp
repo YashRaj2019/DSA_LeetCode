@@ -30,7 +30,7 @@ public:
         int mini = INT_MAX;
 
         for(int i=1; i<ans.size(); i++){
-            mini = min(mini, abs((ans[i] - ans[i-1])));
+            mini = min(mini, (ans[i] - ans[i-1]));
         }
 
         return mini;
