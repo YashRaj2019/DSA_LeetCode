@@ -2,7 +2,6 @@ class Solution {
 public:
 
     int fibon(int n, vector<int> &dp){
-
         if(n<=1){
             return n;
         }
@@ -15,22 +14,27 @@ public:
     }
 
     int fib(int n) {
-        // method 4 : bottom up approach
 
-        if(n<=1) {
+        if(n<=1){
             return n;
         }
 
-        vector<int>dp(n+1, -1);
-
-        // base case 
-        dp[0] = 0;
-        dp[1] = 1;
-
-        for(int i=2; i<=n; i++){
-            dp[i] = dp[i-1] + dp[i-2];
+        if(n == 2){
+            return 1;
         }
 
-        return dp[n];
+        vector<int>dp(3); // method  5: space optimisation
+
+        dp[0] = 0;
+        dp[1] = 1;
+        dp[2] = 1;
+
+        for(int i=3; i<=n; i++){
+            dp[0] = dp[1];
+            dp[1] = dp[2];
+            dp[2] = dp[0] + dp[1];
+
+        }
+        return dp[2];
     }
 };
