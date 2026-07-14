@@ -72,20 +72,16 @@ public:
 
         // method 3: optimal : using hasing : O(n)
 
-        unordered_map<int, int> mp;
-
-        for(int i =0; i<nums.size(); i++){
-
+        unordered_map<int, int>mp;
+        for(int i=0; i<nums.size(); i++){
             int second = target - nums[i];
 
             if(mp.find(second) != mp.end()){
-                return {mp[second], i};
+                return{mp[second], i};
             }
-            
             mp[nums[i]] = i;
-
         }
-
         return {};
     }
 };
+
