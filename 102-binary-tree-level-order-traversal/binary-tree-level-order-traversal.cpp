@@ -14,7 +14,6 @@ public:
     vector<vector<int>> levelOrder(TreeNode* root) {
 
         vector<vector<int>>ans;
-
         if(root==nullptr){
             return ans;
         }
@@ -25,9 +24,8 @@ public:
         while(!q.empty()){
             int n = q.size();
             vector<int>level;
-
-            for(int i=0;i<n;i++){
-                TreeNode *temp = q.front();
+            for(int i=0; i<n; i++){
+                TreeNode* temp = q.front();
                 q.pop();
 
                 level.push_back(temp->val);
@@ -41,8 +39,6 @@ public:
             }
             ans.push_back(level);
         }
-
         return ans;
-        
     }
 };
