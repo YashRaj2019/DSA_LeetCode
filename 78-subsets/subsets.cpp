@@ -7,11 +7,12 @@ public:
             return;
         }
         
+        // include
         ans.push_back(nums[i]);
         printSubsets(nums, ans, allSubsets, i+1, n);
 
-        ans.pop_back();
-        printSubsets(nums, ans, allSubsets, i+1, n);
+        ans.pop_back(); // backtrack 
+        printSubsets(nums, ans, allSubsets, i+1, n); // exclude
     }
 
     vector<vector<int>> subsets(vector<int>& nums) {
