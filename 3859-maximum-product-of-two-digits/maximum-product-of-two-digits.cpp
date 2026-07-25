@@ -1,8 +1,8 @@
 class Solution {
 public:
     int maxProduct(int n) {
-        int mul = 1;
-        int maxi = 0;
+        
+        
         vector<int>arr;
         while(n!=0){
             int digit = n%10;
