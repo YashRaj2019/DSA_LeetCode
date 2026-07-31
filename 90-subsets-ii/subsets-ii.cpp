@@ -1,35 +1,32 @@
 class Solution {
 public:
 
-    void getAllSubsets(vector<int>  &nums, vector<int> &ans, int i, vector<vector<int>> &allSubsets){
+    void helper(int i, vector<int>& nums, vector<int>& ans, vector<vector<int>> &getAllSubsets){
         if(i == nums.size()){
-            allSubsets.push_back(ans);
+            getAllSubsets.push_back(ans);
             return;
         }
 
         // include
         ans.push_back(nums[i]);
-        getAllSubsets(nums, ans, i+1, allSubsets);
+        helper(i+1, nums, ans, getAllSubsets);
 
         ans.pop_back(); // backtrack
 
-        int idx = i + 1;
-
-        while(idx < nums.size()  && nums[idx] == nums[idx-1]){
-            idx++;
+        int index = i+1;
+        while(index < nums.size() && nums[index] == nums[index-1]){
+            index++;
         }
+
         // exclude
-        getAllSubsets(nums, ans, idx, allSubsets);
+        helper(index, nums, ans, getAllSubsets);
     }
 
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
-        vector<vector<int>> allSubsets;
-        vector<int> ans;
-
-        getAllSubsets(nums, ans, 0, allSubsets);
-
-
-        return allSubsets;
+       sort(nums.begin(), nums.end());
+       vector<int>ans;
+       vector<vector<int>>getAllSubsets;
+       helper(0, nums, ans, getAllSubsets);
+       return getAllSubsets; 
     }
 };
