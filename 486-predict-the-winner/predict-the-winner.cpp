@@ -1,19 +1,26 @@
 class Solution {
 public:
 
-    int solve(vector<int>& nums, int i, int j){
+    int solve(vector<int>&nums, int i, int j){
 
-        if(i==j)
+        // only one number is left
+        if(i == j) {
             return nums[i];
+        }
 
-        int takeLeft = nums[i] - solve(nums,i+1,j);
+        // pick the left number
+        int left = nums[i] - solve(nums, i+1, j);
 
-        int takeRight = nums[j] - solve(nums,i,j-1);
+        // pick the right element
+        int right = nums[j] - solve(nums, i, j-1);
 
-        return max(takeLeft,takeRight);
+        // choose the better option
+        return max(left, right);
+
     }
 
     bool predictTheWinner(vector<int>& nums) {
-        return solve(nums,0,nums.size()-1)>=0;
+        return solve(nums, 0, nums.size()-1) >= 0;
+
     }
 };
