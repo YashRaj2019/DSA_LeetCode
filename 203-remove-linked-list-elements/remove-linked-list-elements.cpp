@@ -12,45 +12,62 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
 
-        // Method 1
-        
-        ListNode* temp = head;
-        vector<int>ans;
+        // // Method 1
 
-        // store only the value which is NOT equal to val
-        while(temp != nullptr){
-            if(temp->val != val){
-                ans.push_back(temp->val);
-            }
-            temp = temp->next;
-        }
+        // ListNode* temp = head;
+        // vector<int>ans;
 
-        // if all the nodes had value = val
-        if(ans.empty()){
-            return nullptr;
-        }
+        // // store only the value which is NOT equal to val
+        // while(temp != nullptr){
+        //     if(temp->val != val){
+        //         ans.push_back(temp->val);
+        //     }
+        //     temp = temp->next;
+        // }
 
-        // put the remaining values back into the linked list
-        temp = head;
-        int i = 0;
+        // // if all the nodes had value = val
+        // if(ans.empty()){
+        //     return nullptr;
+        // }
 
-        while(temp != nullptr && i <ans.size()){
-            temp->val = ans[i];
-            i++;
-            temp = temp->next;
-        }
+        // // put the remaining values back into the linked list
+        // temp = head;
+        // int i = 0;
 
-        // move to the LAST valid node
-        temp = head;
+        // while(temp != nullptr && i <ans.size()){
+        //     temp->val = ans[i];
+        //     i++;
+        //     temp = temp->next;
+        // }
+
+        // // move to the LAST valid node
+        // temp = head;
 
     
-        for(int j=1; j<ans.size(); j++){
-            temp=temp->next;
+        // for(int j=1; j<ans.size(); j++){
+        //     temp=temp->next;
+        // }
+
+        // // cut off after the last valid node
+        // temp->next = nullptr;
+
+        // return head;
+
+        // Method 2
+
+        while(head != nullptr && head->val == val){
+            head= head->next;
         }
 
-        // cut off after the last valid node
-        temp->next = nullptr;
-
+        ListNode* temp = head;
+        while(temp != nullptr && temp->next != nullptr){
+            if(temp->next->val == val){
+                temp->next = temp->next->next;
+            }
+            else{
+                temp = temp->next;
+            }
+        }
         return head;
     }
 };
