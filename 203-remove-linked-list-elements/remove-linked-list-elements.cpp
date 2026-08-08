@@ -12,6 +12,8 @@ class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
 
+        // Method 1
+        
         ListNode* temp = head;
         vector<int>ans;
 
