@@ -12,28 +12,27 @@
 class Solution {
 public:
 
-    void inorder(TreeNode* root, vector<int> &ans){
+    void inOrder(TreeNode* root, vector<int>&ans){
+
         if(!root){
             return;
         }
 
-        inorder(root->left, ans);
+        inOrder(root->left, ans);
         ans.push_back(root->val);
-        inorder(root->right, ans);
+        inOrder(root->right, ans);
     }
 
     int minDiffInBST(TreeNode* root) {
-        
+
         vector<int>ans;
-        inorder(root, ans);
+        inOrder(root, ans);
 
         int mini = INT_MAX;
 
         for(int i=1; i<ans.size(); i++){
             mini = min(mini, (ans[i] - ans[i-1]));
         }
-
         return mini;
-
     }
 };
