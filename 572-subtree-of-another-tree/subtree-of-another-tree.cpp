@@ -11,25 +11,24 @@
  */
 class Solution {
 public:
+    bool isIdentical(TreeNode* t1, TreeNode* t2){
 
-    // helper function
-    bool isIdentical(TreeNode *p, TreeNode *q){
-        if(p == NULL || q == NULL){
-            return p == q;
+        if(!t1 || !t2){
+            return t1 == t2;
         }
 
-        return p->val == q->val && isIdentical(p->left, q->left) && isIdentical(p->right, q->right);
+        return (t1->val == t2->val) && isIdentical(t1->left, t2->left) && isIdentical(t1->right, t2->right); 
     }
 
     bool isSubtree(TreeNode* root, TreeNode* subRoot) {
-        if(root == NULL || subRoot == NULL){
+
+        if(!root || !subRoot){
             return root == subRoot;
         }
 
         if(root->val == subRoot->val && isIdentical(root, subRoot)){
             return true;
         }
-
 
         return isSubtree(root->left, subRoot) || isSubtree(root->right, subRoot);
     }
