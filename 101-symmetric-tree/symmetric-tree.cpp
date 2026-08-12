@@ -11,8 +11,7 @@
  */
 class Solution {
 public:
-
-    bool isMirror(TreeNode *t1, TreeNode *t2){
+    bool isMirror(TreeNode* t1, TreeNode* t2){
 
         if(!t1 && !t2){
             return true;
@@ -22,8 +21,7 @@ public:
             return false;
         }
 
-        return (t1->val == t2->val) && isMirror(t1->left, t2->right) && isMirror(t2->left, t1->right);
-
+        return (t1->val == t2->val) && isMirror(t1->left, t2->right) && isMirror(t1->right, t2->left); 
     }
 
     bool isSymmetric(TreeNode* root) {
