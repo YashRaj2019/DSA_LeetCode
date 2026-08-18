@@ -28,7 +28,9 @@ public:
 
         if(root->right){
             allPaths(root->right, path+"->"+to_string(root->right->val), ans);
-        } 
+        }
+
+        
     }
     
 
