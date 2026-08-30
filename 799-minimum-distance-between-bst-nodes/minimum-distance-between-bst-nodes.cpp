@@ -24,15 +24,15 @@ public:
     }
 
     int minDiffInBST(TreeNode* root) {
-
+        
         vector<int>ans;
         inOrder(root, ans);
 
         int mini = INT_MAX;
-
-        for(int i=1; i<ans.size(); i++){
+        for(int i=1; i< ans.size(); i++){
             mini = min(mini, (ans[i] - ans[i-1]));
         }
+
         return mini;
     }
 };
