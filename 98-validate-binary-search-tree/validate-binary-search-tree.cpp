@@ -12,7 +12,8 @@
 class Solution {
 public:
 
-    bool check(TreeNode *root, long minVal, long maxVal){
+    bool check(TreeNode* root, long minVal, long maxVal){
+
         if(!root){
             return true;
         }
@@ -22,6 +23,7 @@ public:
         }
 
         return check(root->left, minVal, root->val) && check(root->right, root->val, maxVal);
+
     }
 
     bool isValidBST(TreeNode* root) {
