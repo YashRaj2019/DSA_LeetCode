@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long countCommas(long long n) {
-        if(n < 999){
+        if(n <= 999){
             return 0;
         }
 
@@ -10,6 +10,6 @@ public:
         for(long long i = 1000; i<= n; i *= 1000){
             ans += n - i + 1;
         }
-        return ans;
+        return ans;   
     }
 };
