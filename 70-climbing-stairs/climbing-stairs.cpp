@@ -1,21 +1,20 @@
 class Solution {
 public:
-    int climbStairs(int n) {
 
-       if(n<=3){
+    int solve(int n, vector<int>&dp){
+        if(n<=2){
             return n;
-       }
+        }
 
-       vector<int>dp(3);
-       dp[0] = 1;
-       dp[1] = 2;
-       dp[2] = 3;
+        if(dp[n] != -1){
+            return dp[n];
+        }
 
-       for(int i=4; i<=n; i++){
-            dp[0] = dp[1];
-            dp[1] = dp[2];
-            dp[2] = dp[0] + dp[1];
-       }
-        return dp[2];
+        return dp[n] = solve(n-1, dp) + solve(n-2, dp);
     }
-}; 
+
+    int climbStairs(int n) {
+        vector<int>dp(n+1, -1);
+        return solve(n, dp);
+    }
+};
