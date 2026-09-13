@@ -1,7 +1,7 @@
 class Solution {
 public:
 
-    int solve(int n, vector<int>&dp){
+    int solve(int n, vector<int>&dp){ // memoization
         if(n<=2){
             return n;
         }
