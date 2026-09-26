@@ -1,17 +1,32 @@
 class Solution {
     public String removeStars(String s) {
-        StringBuilder sb = new StringBuilder();
+        // StringBuilder sb = new StringBuilder();
 
-        for(int i=0; i<s.length(); i++){
-            if(s.charAt(i) == '*'){
-                sb.deleteCharAt(sb.length()-1);
+        // for(int i=0; i<s.length(); i++){
+        //     if(s.charAt(i) == '*'){
+        //         sb.deleteCharAt(sb.length()-1);
+        //     }
+
+        //     else{
+        //         sb.append(s.charAt(i));
+        //     }
+        // }
+
+        // return sb.toString();
+
+        char[] arr = s.toCharArray();
+        int top = 0;
+
+        for(char ch : arr){
+            if(ch == '*'){
+                top--;
             }
-
             else{
-                sb.append(s.charAt(i));
+                arr[top] = ch;
+                top++;
             }
         }
 
-        return sb.toString();
+        return new String(arr, 0, top);
     }
 }
