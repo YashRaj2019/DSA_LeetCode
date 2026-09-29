@@ -12,12 +12,18 @@ class Solution {
 
         // return ans;
 
-        // method 2 :
-        int num = 1;
+        // // method 2 :
+        // int num = 1;
 
-        while(num < n){
-            num = num * 2 + 1;
-        }
-        return num;
+        // while(num < n){
+        //     num = num * 2 + 1;
+        // }
+        // return num;
+
+        // method 3 :
+
+        int bits = 32 - Integer.numberOfLeadingZeros(n);
+
+        return (1 << bits) - 1;
     }
 }
