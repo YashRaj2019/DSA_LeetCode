@@ -20,9 +20,15 @@ class Solution {
         // }
         // return num;
 
-        // method 3 :
+        // // method 3 :
 
-        int bits = 32 - Integer.numberOfLeadingZeros(n);
+        // int bits = 32 - Integer.numberOfLeadingZeros(n);
+
+        // return (1 << bits) - 1;
+
+        // method 4 :
+
+        int bits = Integer.toBinaryString(n).length();
 
         return (1 << bits) - 1;
     }
