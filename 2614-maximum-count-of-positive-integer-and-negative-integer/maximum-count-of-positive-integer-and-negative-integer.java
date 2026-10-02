@@ -5,7 +5,7 @@ class Solution {
             if(nums[i] > 0){
                 pos++;
             }
-            else if(nums[i] < 0){
+            if(nums[i] < 0){
                 neg++;
             }
         }
