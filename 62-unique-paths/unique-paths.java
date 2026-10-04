@@ -20,7 +20,11 @@ class Solution {
         // }
         // return uniquePaths(m, n-1) + uniquePaths(m-1, n);
 
-        int[][] dp = new int[m+1][n+1];
+        int[][] dp = new int[m+1][n+1];  // if int[][] dp = new int dp[m][n], then 
+                                        // if(dp[m][n] != 0){   this can be replaced by m-1 and n-1 in above function
+                                        //      return dp[m][n];
+                                        // }
+                                    
         return solve(m, n, dp);
     }
 }
