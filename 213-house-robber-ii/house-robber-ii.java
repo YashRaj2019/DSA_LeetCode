@@ -1,19 +1,23 @@
 class Solution {
-    int Robber(int start, int end, int[] arr, int[] dp){
+    int Robber(int start, int end, int[] arr){
+        int[] dp = new int[arr.length];
 
-        if(start > end){
-            return 0;
+        dp[start] = arr[start];
+
+        for(int i=start+1; i<=end; i++){
+            int pick = arr[i];
+
+            if(i-2 >= start){
+                pick += dp[i-2];
+            }
+
+            int skip = dp[i-1];
+
+            dp[i] = Math.max(pick, skip);
         }
-
-        if(dp[end] != -1){
-            return dp[end];
-        }
-
-        int pick = arr[end] + Robber(start, end-2, arr, dp);
-        int skip = Robber(start, end-1, arr, dp);
-
-        return dp[end] = Math.max(pick, skip);
+        return dp[end];
     }
+
     public int rob(int[] nums) {
        int n = nums.length;
 
@@ -21,18 +25,48 @@ class Solution {
            return nums[0];
        }
 
-       int[] dp1 = new int[n];
-       int[] dp2 = new int[n];
 
-       Arrays.fill(dp1, -1);
-       Arrays.fill(dp2, -1);
-
-        int case1 = Robber(0, n-2, nums, dp1);
-        int case2 = Robber(1, n-1, nums, dp2);
+        int case1 = Robber(0, n-2, nums);
+        int case2 = Robber(1, n-1, nums);
 
         return Math.max(case1, case2);
     }
 }
+// class Solution {
+//     int Robber(int start, int end, int[] arr, int[] dp){
+
+//         if(start > end){
+//             return 0;
+//         }
+
+//         if(dp[end] != -1){
+//             return dp[end];
+//         }
+
+//         int pick = arr[end] + Robber(start, end-2, arr, dp);
+//         int skip = Robber(start, end-1, arr, dp);
+
+//         return dp[end] = Math.max(pick, skip);
+//     }
+//     public int rob(int[] nums) {
+//        int n = nums.length;
+
+//        if(n==1){
+//            return nums[0];
+//        }
+
+//        int[] dp1 = new int[n];
+//        int[] dp2 = new int[n];
+
+//        Arrays.fill(dp1, -1);
+//        Arrays.fill(dp2, -1);
+
+//         int case1 = Robber(0, n-2, nums, dp1);
+//         int case2 = Robber(1, n-1, nums, dp2);
+
+//         return Math.max(case1, case2);
+//     }
+// }
 // class Solution {
 //     int Robber(int start, int end, int[] arr){
 
