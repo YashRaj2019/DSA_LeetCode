@@ -43,6 +43,6 @@ public class Solution {
             temp = temp.next;
             slow = slow.next;
         }
-        return temp;  // slow can also be true here
+        return slow;  // slow can also be true here
     }
 }
