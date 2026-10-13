@@ -30,7 +30,6 @@ class Solution {
         for(int i=0; i<length/2 -1; i++){
             temp = temp.next;
         }
-        // temp.val = temp.next.val;
         temp.next = temp.next.next;
 
         return head;
