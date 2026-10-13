@@ -30,19 +30,19 @@ public class Solution {
         }
         
         
-        slow = head;
-        while(slow != fast){
-            slow = slow.next;
-            fast = fast.next;
-        }
-        
-        return slow;
-        
-        // ListNode temp = head;
-        // while(temp != slow){
-        //     temp = temp.next;
+        // slow = head;
+        // while(slow != fast){
         //     slow = slow.next;
+        //     fast = fast.next;
         // }
-        // return temp;  // slow can also be true here
+        
+        // return slow;
+        
+        ListNode temp = head;
+        while(temp != slow){
+            temp = temp.next;
+            slow = slow.next;
+        }
+        return temp;  // slow can also be true here
     }
 }
