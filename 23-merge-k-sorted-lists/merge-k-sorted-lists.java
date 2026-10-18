@@ -22,11 +22,14 @@ class Solution {
 
         while(arr.size() > 1){
 
-            ListNode a = arr.get(arr.size() - 1);
-            arr.remove(arr.size() - 1);
+            ListNode a = arr.remove(arr.size() - 1);
+            ListNode b = arr.remove(arr.size() - 1);
 
-            ListNode b = arr.get(arr.size() - 1);
-            arr.remove(arr.size() - 1);
+            // ListNode a = arr.get(arr.size() - 1);
+            // arr.remove(arr.size() - 1);
+
+            // ListNode b = arr.get(arr.size() - 1);
+            // arr.remove(arr.size() - 1);
 
             ListNode c = merge(a, b);
             arr.add(c);
