@@ -16,7 +16,7 @@ class Solution {
         // return names;
 
         TreeMap<Integer, String> map = new TreeMap(Collections.reverseOrder());
-        for(int i=0; i<names.length; i++){
+        for(int i=0; i<heights.length; i++){
             map.put(heights[i], names[i]);
         }
 
