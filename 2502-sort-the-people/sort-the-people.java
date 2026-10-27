@@ -1,18 +1,25 @@
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
-        for(int i=0; i<heights.length; i++){
-            for(int j=i+1; j<heights.length; j++){
-                if(heights[i] < heights[j]){
-                    int temp = heights[i];
-                    heights[i] = heights[j];
-                    heights[j] = temp;
+        // for(int i=0; i<heights.length; i++){
+        //     for(int j=i+1; j<heights.length; j++){
+        //         if(heights[i] < heights[j]){
+        //             int temp = heights[i];
+        //             heights[i] = heights[j];
+        //             heights[j] = temp;
 
-                    String s = names[i];
-                    names[i] = names[j];
-                    names[j] = s;
-                }
-            }
+        //             String s = names[i];
+        //             names[i] = names[j];
+        //             names[j] = s;
+        //         }
+        //     }
+        // }
+        // return names;
+
+        TreeMap<Integer, String> map = new TreeMap(Collections.reverseOrder());
+        for(int i=0; i<names.length; i++){
+            map.put(heights[i], names[i]);
         }
-        return names;
+
+        return map.values().toArray(new String[0]);
     }
 }
