@@ -5,7 +5,7 @@ class Solution {
         int n = nums.length;
         int count = 0;
         for(int num : nums){
-            count += Math.abs(nums[n-1] - num);
+            count += nums[n-1] - num;
         }
 
         return count;
