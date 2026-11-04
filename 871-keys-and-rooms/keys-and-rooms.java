@@ -15,11 +15,16 @@ class Solution {
                 }
             }
         }
-        for(boolean flag : visited){
-            if(flag == false){
+        for(int i=0; i<visited.length; i++){
+            if(visited[i] == false){
                 return false;
             }
         }
+        // for(boolean flag : visited){
+        //     if(flag == false){
+        //         return false;
+        //     }
+        // }
         return true; 
     }
 }
