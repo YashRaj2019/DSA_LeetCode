@@ -3,7 +3,7 @@ public:
 
     void dfs(int i, int j, vector<vector<bool>> &visited, vector<vector<char>> &grid, int n , int m){
 
-        if(i<0 || j<0 || i >= n || j >= m || visited[i][j] || grid[i][j] != '1'){
+        if(i<0 || j<0 || i >= n || j >= m || visited[i][j] || grid[i][j] == '0'){
             return;
         }
 
