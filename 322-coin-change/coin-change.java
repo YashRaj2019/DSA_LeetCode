@@ -26,6 +26,6 @@ class Solution {
 
         int ans = helper(n, amount, coins, dp);
 
-        return ans == (int) 1E9 ? -1 : ans;
+        return ans >= (int) 1E9 ? -1 : ans;
     }
 }
