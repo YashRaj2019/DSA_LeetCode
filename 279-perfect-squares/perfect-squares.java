@@ -27,3 +27,32 @@ class Solution {
         return helper(n, 1, dp);
     }
 }
+
+
+// class Solution {
+
+//     public int helper(int n, int i, int[] dp){
+//         if(n==0){
+//             return 0;
+//         }
+
+//         if(i * i > n){
+//             return 100000;
+//         }
+
+//         if(dp[n] != -1){
+//             return dp[n];
+//         }
+
+//         int take = 1 + helper(n - i * i, i, dp);
+//         int notTake = helper(n, i+1, dp);
+
+//         return dp[i] = Math.min(take, notTake);
+//     }
+
+//     public int numSquares(int n) {
+//         int[] dp = new int[n+1];
+//         Arrays.fill(dp, -1);
+//         return helper(n, 1, dp);
+//     }
+// }
